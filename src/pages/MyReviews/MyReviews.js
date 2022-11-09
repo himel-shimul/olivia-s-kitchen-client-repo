@@ -36,7 +36,8 @@ const MyReviews = () => {
 
     return (
         <div className="overflow-x-auto w-full">
-  <table className="table w-full">
+  {
+    reviews.length > 0 ? <table className="table w-full">
     {/* <thead>
       <tr>
         <th>Name</th>
@@ -64,7 +65,8 @@ const MyReviews = () => {
         }
     </tbody>
     
-  </table>
+  </table> : <p className='text-3xl bold text-center py-56'>No reviews found!</p>
+  }
 </div>
     );
 };
