@@ -34,7 +34,6 @@ const ServiceDetails = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if(data.acknowledged){
                 alert('Thanks for your review')
                 form.reset();
@@ -44,8 +43,6 @@ const ServiceDetails = () => {
         .catch(err => console.error(err))
 
     }
-
-
 
     // useEffect( () => {
     //   fetch('http://localhost:5000/reviews')
@@ -59,7 +56,6 @@ const ServiceDetails = () => {
         fetch(`http://localhost:5000/reviews?reviewId=${_id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             setReviews(data)
         })
     }, [_id, refetch])
@@ -83,7 +79,7 @@ const ServiceDetails = () => {
     <div className='w-1/2 items-center'>
     <form onSubmit={handleInputs}>
             <div className='grid grid-cols-2 lg:grid-cols-2 gap-4'>
-                    <input name='name' type="text" placeholder="Name" className="input input-bordered input-ghost w-full" />
+                    <input name='name' type="text" placeholder="Name" className="input input-bordered input-ghost w-full" required/>
                     <input name='email' defaultValue={user?.email} type="text" placeholder="Last Name" className="input input-bordered input-ghost w-full" readOnly />
                     <input name='phone' type="text" placeholder="Your Phone" className="input input-bordered input-ghost w-full" required />
                     <textarea name='message' className="textarea textarea-bordered h-24 w-full" placeholder="your review" required></textarea>

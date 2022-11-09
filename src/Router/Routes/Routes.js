@@ -3,6 +3,7 @@ import Main from "../../Layout/Main";
 import Home from "../../pages/Home/Home/Home";
 import ServiceDetails from "../../pages/Home/Services/ServiceDetails";
 import Login from "../../pages/Login/Login";
+import MyReviews from "../../pages/MyReviews/MyReviews";
 import ReviewPage from "../../pages/ReviewPage/ReviewPage";
 import Reviews from "../../pages/Reviews/Reviews";
 import SIgnUp from "../../pages/SIgnUp/SIgnUp";
@@ -35,9 +36,9 @@ const router = createBrowserRouter([
 
         // }
         {
-          path: '/reviews',
-          element: <Reviews></Reviews>,
-          // loader: ()=> fetch(`http://localhost:5000/reviews`)
+          path: '/myReviews',
+          element: <MyReviews></MyReviews>,
+          loader: ()=> fetch('http://localhost:5000/reviews')
         }
       ]
     
