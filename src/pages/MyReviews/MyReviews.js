@@ -35,7 +35,7 @@ const MyReviews = () => {
     }
 
     return (
-        <div className="overflow-x-auto w-full">
+        <div className="overflow-x-auto w-full my-20">
   {
     reviews.length > 0 ? <table className="table w-full">
     {/* <thead>

@@ -43,12 +43,15 @@ const Login = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-        <input className="btn btn-primary" type="submit" value="Login" />
+        <input className="btn btn-primary mb-8" type="submit" value="Login" />
           
+      <p className='text-center '>Don't have an account yet? <Link className='text-orange-400' to='/signup'>Signup</Link></p>
+      <div className="divider">OR</div>
+      <button className="btn btn-error">Google</button>
 
         </div>
       </form>
-      <p className='text-center '>Don't have an account yet? <Link className='text-orange-400' to='/signup'>Signup</Link></p>
+      
     </div>
   </div>
 </div>

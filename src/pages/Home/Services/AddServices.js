@@ -9,7 +9,31 @@ const AddServices = () => {
         const title = form.title.value;
         const img = form.imageUrl.value;
         const price = form.price.value;
-        console.log(img);
+        const category = form.category.value;
+        const description = form.description.value;
+
+        const service = {
+            title,
+            img,
+            description,
+            category,
+            price
+        }
+        fetch('http://localhost:5000/service', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(service),
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                alert('Thanks for your service')
+                form.reset();
+            }
+        })
+        .catch(err => console.error(err))
     }
 
     return (
