@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const SIgnUp = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, user} = useContext(AuthContext);
+    const location = useLocation();
+  const from = location?.state?.from?.pathname || '/';
 
     const handleSignUp = event =>{
         event.preventDefault();
         const form = event.target;
-        const displayName = form.name.value;
+        const displayName = form.namen.value;
         const email = form.email.value;
         const password = form.password.value;
         
@@ -19,7 +21,9 @@ const SIgnUp = () => {
         })
         .catch(err => console.error(err));
     }
-
+    if(user){
+      return <Navigate to={from} state={{from: location}} replace></Navigate>
+    }
 
     return (
         <div className="hero my-8">

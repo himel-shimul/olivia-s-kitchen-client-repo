@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import 'react-photo-view/dist/react-photo-view.css';
+
 
 const ServiceDetails = () => {
 
@@ -64,7 +67,13 @@ const ServiceDetails = () => {
         <>
         <div className="card w-full bg-base-100 shadow-xl mb-5">
   <figure className="px-10 pt-10">
-    <img src={img} alt="img" className="" />
+    <div>
+      <PhotoProvider>
+    <PhotoView src={img}>
+      <img src={img} alt="img" style={{ objectFit: 'cover' }} />
+      </PhotoView>
+      </PhotoProvider>
+    </div>
   </figure>
   <div className="card-body items-center text-center">
     <h2 className="card-title">{title}</h2>
@@ -76,7 +85,14 @@ const ServiceDetails = () => {
     </div>
   </div>
 </div>
-    <div className='w-1/2 items-center'>
+
+      {/* review section */}
+
+    { user?.email ? 
+    
+      <>
+      <div className='w-1/2 items-center ml-3'>
+        <h1 className='text-3xl m-4'>Place your review</h1>
     <form onSubmit={handleInputs}>
             <div className='grid grid-cols-2 lg:grid-cols-2 gap-4'>
                     <input name='name' type="text" placeholder="Name" className="input input-bordered input-ghost w-full" required/>
@@ -89,20 +105,16 @@ const ServiceDetails = () => {
             </form>
     </div>
     <div>
-            <h2>Your have {reviews.length}</h2>
-            <div className="overflow-x-auto w-full">
+            <div className="overflow-x-auto w-full my-3">
   <table className="table w-full">
-    <div>
-      {/* {
-        reviews.map(review => <ReviewRow
-        key={review._id}
-        review={review}
-        ></ReviewRow>)
-      } */}
+    <div className=''>
       {
-        reviews.map(review => <div key={review._id} className='w-2/4 py-4'>
-        <p className='text-2xl font-bold'>{review.client}</p>
-        <p className='text-1xl font-bold text-center'>{review.message}</p>
+        reviews.map(review => <div key={review._id} className='w-2/4 py-4 px-4'>
+          <div className='flex '>
+          <img src={user?.photoURL} className='w-12 rounded' alt="" />
+        <p className='text-2xl font-bold ml-4'>{review.client}</p>
+          </div>
+        <p className='text-1xl ml-14 p-3'>{review.message}</p>
         </div>)
       }
     </div>
@@ -110,6 +122,13 @@ const ServiceDetails = () => {
   </table>
 </div>
         </div>
+      </>
+      : 
+      <div className='m-auto py-20'>
+        <p className='text-2xl'>Please <Link className='text-sky-400' to='/login'>Login</Link> to review this</p>
+      </div>
+
+    }
         </>
     );
 };

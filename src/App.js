@@ -1,4 +1,5 @@
-import logo from './logo.svg';
+import 'react-photo-view/dist/react-photo-view.css';
+
 import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import router from './Router/Routes/Routes';
