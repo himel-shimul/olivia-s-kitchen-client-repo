@@ -55,10 +55,12 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <div className='flex '>
-        <p className='text-2xl font-bold ml-4'></p>
-          <img src={user?.photoURL} className='w-12 rounded' alt="" />
-          </div>
+  {user && 
+  <div className='flex'>
+  <p className='text-1xl align-middle mr-2'>Hello, {user?.email}</p>
+    <img src={user?.photoURL} className='w-12 rounded' alt="" />
+    </div>
+  }
 
   </div>
 </div>

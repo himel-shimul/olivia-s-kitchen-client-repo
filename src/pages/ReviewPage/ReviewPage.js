@@ -23,7 +23,8 @@ const ReviewPage = ({id, title, price }) => {
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+
             },
             body: JSON.stringify(review),
         })
