@@ -75,6 +75,9 @@ const MyReviews = () => {
         })
     
     }
+    const refreshPage = ()=>{
+        window.location.reload();
+     }
 
     
     
@@ -103,7 +106,7 @@ const MyReviews = () => {
                         <input type="checkbox" id="my-modal" className="modal-toggle" />
                         <div className="modal">
                         <div className="modal-box relative">
-                        <label htmlFor="my-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <label onClick={refreshPage} htmlFor="my-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                             <h3 className="font-bold text-lg py-3">update your Message</h3>
                             <input  type="text" name='message' placeholder="Type here" className="input input-bordered input-secondary w-full max-w-xs" />
                             <div className="modal-action">
