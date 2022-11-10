@@ -39,7 +39,7 @@ Graph databases add the concept of relationships (direct links between objects) 
     
   </div>
 </div>
-<div className="hero min-h-screen bg-base-200">
+<div className="hero px-16 bg-base-200">
   <div className="hero-content text-center">
   <div className="max-w-full">
     <h1 className="text-5xl font-bold">What is JWT, and how does it work?</h1>
@@ -50,6 +50,32 @@ Graph databases add the concept of relationships (direct links between objects) 
 
 The attacker can use this vulnerablity to their advantage by setting the algorithm to ’none,’ giving a null signature, and fooling the server to accept it as a valid token. However, many libraries have already been patched for this vulnerability and added security checks to reject the none algorithm.
       </p>
+      
+    </div>
+  </div>
+</div>
+<div className="hero px-16 bg-base-200">
+  <div className="hero-content text-center">
+  <div className="max-w-full">
+    <h1 className="text-5xl font-bold">What is the difference between javascript and NodeJS?</h1>
+      <p className="py-6">At first it was hard for me to understand the differences because for me, they were the same thing. It was all javascript. But then, I started to understand what each one was used for. For this reason, I share it :)
+
+☘ JavaScript is a language that runs inside web browsers as part of the documents loaded by the browser and is used as a client-side development language. It provides the behavior of the pages. Like HTML it provides the semantic structure and CSS the look and feel.
+
+However, being an interpreted language, it needs an interpreter to run. V8 is Google Chrome's JS engine and 'node' is a front-end that can be used to run JavaScript scripts outside the browser. In other words:
+
+☘ NodeJs is an open source, cross-platform environment that allows you to create server-side applications and tools using JavaScript.</p>
+      
+    </div>
+  </div>
+</div>
+<div className="hero px-16 bg-base-200">
+  <div className="hero-content text-center">
+  <div className="max-w-full">
+    <h1 className="text-5xl font-bold">How does NodeJS handle multiple requests at the same time?</h1>
+      <p className="py-6">NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them. EventLoop is the listener for the EventQueue. 
+
+If NodeJS can process the request without I/O blocking then the event loop would itself process the request and sends the response back to the client by itself. But, it is possible to process multiple requests parallelly using the NodeJS cluster module or worker_threads module.</p>
       
     </div>
   </div>
