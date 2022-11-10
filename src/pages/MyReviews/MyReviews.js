@@ -75,10 +75,10 @@ const MyReviews = () => {
                         <input type="checkbox" id="my-modal" className="modal-toggle" />
                         <div className="modal">
                         <div className="modal-box">
-                            <h3 className="font-bold text-lg py-3">Congratulations random Internet user!</h3>
+                            <h3 className="font-bold text-lg py-3">update your Message</h3>
                             <input  type="text" name='message' placeholder="Type here" className="input input-bordered input-secondary w-full max-w-xs" />
                             <div className="modal-action">
-                            <button type='submit'>Submit</button>
+                            <button htmlFor="my-modal" type='submit' className='btn btn-outline'>Submit</button>
                             </div>
                         </div>
                         </div>
