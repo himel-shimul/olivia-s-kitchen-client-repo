@@ -1,11 +1,12 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useSetTitle from '../../../Hooks/useSetTitle';
 import ServiceCard from './ServiceCard';
 
 const AllServices = () => {
 
     const allServices = useLoaderData();
-
+    useSetTitle('Services')
     return (
         <div className='my-8'>
             <div className='text-center'>

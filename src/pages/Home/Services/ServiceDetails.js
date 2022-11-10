@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import 'react-photo-view/dist/react-photo-view.css';
+import useSetTitle from '../../../Hooks/useSetTitle';
 
 
 const ServiceDetails = () => {
@@ -62,7 +63,9 @@ const ServiceDetails = () => {
             setReviews(data)
         })
     }, [_id, refetch])
+    useSetTitle('ServiceDetails')
 
+    
     return (
         <>
         <div className="card w-full bg-base-100 shadow-xl mb-5">

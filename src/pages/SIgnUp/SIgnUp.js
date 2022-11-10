@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useSetTitle from '../../Hooks/useSetTitle';
 
 const SIgnUp = () => {
     const {createUser, user} = useContext(AuthContext);
     const location = useLocation();
   const from = location?.state?.from?.pathname || '/';
-
+  useSetTitle('sign Up')
     const handleSignUp = event =>{
         event.preventDefault();
         const form = event.target;
@@ -24,7 +25,7 @@ const SIgnUp = () => {
     if(user){
       return <Navigate to={from} state={{from: location}} replace></Navigate>
     }
-
+    
     return (
         <div className="hero my-8">
   <div className="hero-content w-2/4">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useSetTitle from '../../../Hooks/useSetTitle';
 
 const AddServices = () => {
 
@@ -35,6 +36,8 @@ const AddServices = () => {
         })
         .catch(err => console.error(err))
     }
+
+    useSetTitle('Add Services')
 
     return (
         <div className='w-full '>
