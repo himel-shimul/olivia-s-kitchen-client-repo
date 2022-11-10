@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, Navigate, useLoaderData, useLocation } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import 'react-photo-view/dist/react-photo-view.css';
@@ -12,6 +12,8 @@ const ServiceDetails = () => {
     const {_id, title, price, img, description, category} = useLoaderData();
     const [reviews, setReviews] = useState([]);
     const [refetch, shouldRefetch] = useState(true);
+    const [redirect, setRedirect] = useState(false);
+    const location = useLocation();
 
     const handleInputs= event =>{
         event.preventDefault();
@@ -69,6 +71,9 @@ const ServiceDetails = () => {
     return (
         <>
         <div className="card w-full bg-base-100 shadow-xl mb-5">
+          {
+            redirect && <Navigate to='/login' state={{from: location}} replace></Navigate>
+          }
   <figure className="px-10 pt-10">
     <div>
       <PhotoProvider>
@@ -128,7 +133,7 @@ const ServiceDetails = () => {
       </>
       : 
       <div className='m-auto py-20'>
-        <p className='text-2xl'>Please <Link className='text-sky-400' to='/login'>Login</Link> to review this</p>
+        <p className='text-2xl'>Please <button className='text-sky-400' onClick={() => setRedirect(true)}>Login</button> to review this</p>
       </div>
 
     }
