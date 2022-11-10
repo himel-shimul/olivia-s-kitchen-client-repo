@@ -36,17 +36,17 @@ const router = createBrowserRouter([
         {
           path: '/services/:id',
           element: <ServiceDetails></ServiceDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+          loader: ({params}) => fetch(`https://olivias-kitchen-server.vercel.app/services/${params.id}`)
         },
         {
           path: '/allServices',
           element: <AllServices></AllServices>,
-          loader: ()=> fetch('http://localhost:5000/allServices')
+          loader: ()=> fetch('https://olivias-kitchen-server.vercel.app/allServices')
         },
         {
           path: '/myReviews',
           element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute> ,
-          loader: ()=> fetch('http://localhost:5000/reviews')
+          loader: ()=> fetch('https://olivias-kitchen-server.vercel.app/reviews')
         },
         {
           path: '/addservice',

@@ -13,7 +13,7 @@ const MyReviews = () => {
     console.log(reviews);
 
     useEffect( () =>{
-        fetch(`http://localhost:5000/review?email=${user?.email}`, {
+        fetch(`https://olivias-kitchen-server.vercel.app/review?email=${user?.email}`, {
             headers: {
                 authorization: ` Bearer ${localStorage.getItem('token')}`
             }
@@ -28,7 +28,7 @@ const MyReviews = () => {
     const handleDelete = id =>{
         const success = window.confirm('Are you sure you want to delete?');
         if(success){
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://olivias-kitchen-server.vercel.app/review/${id}`, {
                 method: "DELETE",
             })
             .then(res =>{
@@ -54,7 +54,7 @@ const MyReviews = () => {
         const form = event.target;
         const message = form.message.value;
         console.log(message);
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://olivias-kitchen-server.vercel.app/reviews/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -62,8 +62,21 @@ const MyReviews = () => {
             },
             body: JSON.stringify({message: message})
         })
+        .then(res =>res.json())
+        .then(data => {
+            console.log(data);
+            if(data.modifiedCount > 0){
+                const remaining = reviews.filter(odr => odr._id !== id);
+                const approving = reviews.find(odr => odr._id === id);
+
+                const newReviews = [approving, ...remaining ];
+                setReviews(newReviews);
+            }
+        })
     
     }
+
+    
     
     return (
         <div className="overflow-x-auto w-full my-20">

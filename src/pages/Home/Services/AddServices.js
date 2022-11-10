@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useSetTitle from '../../../Hooks/useSetTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddServices = () => {
 
@@ -20,7 +22,7 @@ const AddServices = () => {
             category,
             price
         }
-        fetch('http://localhost:5000/service', {
+        fetch('https://olivias-kitchen-server.vercel.app/service', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -30,7 +32,7 @@ const AddServices = () => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged){
-                alert('Thanks for your service')
+              toast("Add Successfully");
                 form.reset();
             }
         })
@@ -81,6 +83,7 @@ const AddServices = () => {
         </div>
         <div className="form-control mt-6">
       <input className="btn btn-primary" type="submit" value="Submit" />
+      <ToastContainer />
       </div>
       </form>
         </div>

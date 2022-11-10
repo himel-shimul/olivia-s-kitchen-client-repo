@@ -18,8 +18,7 @@ const AboutMe = () => {
       <Link to='/blog'><button className="btn btn-warning">Read My Blog</button></Link>
     </div>
     <div className='relative w-1/2'>
-        <img src={chef} alt='' className="w-4/5 h-full rounded-lg shadow-2xl" />
-        <img src='{parts}' alt='' className="absolute right-5 top-1/2 w-3/5 border-8 border-white rounded-lg shadow-2xl" />
+        <img src={chef} alt='' className="w-4/5 h-full rounded-lg" />
     </div>
   </div>
 </div>

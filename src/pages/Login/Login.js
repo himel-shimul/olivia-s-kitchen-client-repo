@@ -23,7 +23,7 @@ const Login = () => {
         const currentUser ={
           email: user.email
         }
-        fetch('http://localhost:5000/jwt', {
+        fetch('https://olivias-kitchen-server.vercel.app/jwt', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'
@@ -43,6 +43,9 @@ const Login = () => {
       .catch(err =>{
         console.error(err);
         
+      })
+      .finally(() =>{
+        setLoading(false);
       })
       
     }
@@ -64,7 +67,7 @@ const Login = () => {
           }
 
           // get jwt token
-          fetch('http://localhost:5000/jwt', {
+          fetch('https://olivias-kitchen-server.vercel.app/jwt', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'

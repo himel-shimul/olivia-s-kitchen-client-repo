@@ -4,11 +4,15 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import 'react-photo-view/dist/react-photo-view.css';
 import useSetTitle from '../../../Hooks/useSetTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ServiceDetails = () => {
 
   const {user} = useContext(AuthContext);
+
+  
     const {_id, title, price, img, description, category} = useLoaderData();
     const [reviews, setReviews] = useState([]);
     const [refetch, shouldRefetch] = useState(true);
@@ -31,7 +35,7 @@ const ServiceDetails = () => {
             phone,
             message
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://olivias-kitchen-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -42,7 +46,7 @@ const ServiceDetails = () => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged){
-                alert('Thanks for your review')
+              toast("Thanks For your Review");
                 form.reset();
                 shouldRefetch(!refetch)
             }
@@ -52,7 +56,7 @@ const ServiceDetails = () => {
     }
 
     // useEffect( () => {
-    //   fetch('http://localhost:5000/reviews')
+    //   fetch('https://olivias-kitchen-server.vercel.app/reviews')
     //   .then(res => res.json())
     //   .then(data => {
     //     console.log(data)
@@ -60,7 +64,7 @@ const ServiceDetails = () => {
     // }, [])
 
     useEffect( () =>{
-        fetch(`http://localhost:5000/reviews?reviewId=${_id}`)
+        fetch(`https://olivias-kitchen-server.vercel.app/reviews?reviewId=${_id}`)
         .then(res => res.json())
         .then(data => {
             setReviews(data)
@@ -109,6 +113,7 @@ const ServiceDetails = () => {
                     <input name='phone' type="text" placeholder="Your Phone" className="input input-bordered input-ghost w-full" required />
                     <textarea name='message' className="textarea textarea-bordered h-24 w-full" placeholder="your review" required></textarea>
                     <input className='btn' type="submit" name="" value="submit" />
+                    <ToastContainer />
 
                 </div>
             </form>

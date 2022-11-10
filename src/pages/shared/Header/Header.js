@@ -57,7 +57,7 @@ const Header = () => {
   <div className="navbar-end">
   {user && 
   <div className='flex'>
-  <p className='text-1xl align-middle mr-2'>Hello, {user?.email}</p>
+  <p className='text-1xl align-middle mr-2'> {user?.email}</p>
     <img src={user?.photoURL} className='w-12 rounded' alt="" />
     </div>
   }

@@ -20,7 +20,7 @@ const ReviewPage = ({id, title, price }) => {
             phone,
             message
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://olivias-kitchen-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -32,7 +32,7 @@ const ReviewPage = ({id, title, price }) => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
-                alert('Thanks for your review')
+                alert('Thanks')
                 form.reset();
             }
         })

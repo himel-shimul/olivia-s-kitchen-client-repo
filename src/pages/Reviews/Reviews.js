@@ -9,7 +9,7 @@ const Reviews = ({id}) => {
     const [reviews, setReviews] = useState([]);
 
     // useEffect( () => {
-    //   fetch('http://localhost:5000/reviews')
+    //   fetch('https://olivias-kitchen-server.vercel.app/reviews')
     //   .then(res => res.json())
     //   .then(data => {
     //     console.log(data)
@@ -17,7 +17,7 @@ const Reviews = ({id}) => {
     // }, [])
 
     useEffect( () =>{
-        fetch(`http://localhost:5000/reviews?reviewId=${id}`)
+        fetch(`https://olivias-kitchen-server.vercel.app/reviews?reviewId=${id}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
