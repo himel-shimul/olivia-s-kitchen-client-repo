@@ -23,7 +23,7 @@ const MyReviews = () => {
             console.log(data);
             setReviews(data);
         })
-    }, [user?.email])
+    }, [user?.email, setReviews])
 
     const handleDelete = id =>{
         const success = window.confirm('Are you sure you want to delete?');
@@ -75,9 +75,6 @@ const MyReviews = () => {
         })
     
     }
-    const refreshPage = ()=>{
-        window.location.reload();
-     }
 
     
     
@@ -100,13 +97,13 @@ const MyReviews = () => {
                     <p className='text-1xl px-4'>{review.message}</p>
                     <form onSubmit={(e) =>handleMessage(e, review._id)}>
                         {/* The button to open modal */}
-                        <label htmlFor="my-modal" className="btn">edit</label>
+                        <label htmlFor={review._id} className="btn">edit</label>
 
                         {/* Put this part before </body> tag */}
-                        <input type="checkbox" id="my-modal" className="modal-toggle" />
+                        <input type="checkbox" id={review._id} className="modal-toggle" />
                         <div className="modal">
                         <div className="modal-box relative">
-                        <label onClick={refreshPage} htmlFor="my-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <label htmlFor={review._id} className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                             <h3 className="font-bold text-lg py-3">update your Message</h3>
                             <input  type="text" name='message' placeholder="Type here" className="input input-bordered input-secondary w-full max-w-xs" />
                             <div className="modal-action">

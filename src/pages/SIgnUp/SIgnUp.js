@@ -11,14 +11,31 @@ const SIgnUp = () => {
     const handleSignUp = event =>{
         event.preventDefault();
         const form = event.target;
-        const displayName = form.namen.value;
+        const displayName = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         
         createUser(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user);
+            const currentUser ={
+              email: user.email
+            }
+            fetch('https://olivias-kitchen-server.vercel.app/jwt', {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+  
+              localStorage.setItem('token', data.token);
+              // navigate(from, {replace: true});
+  
+            })
         })
         .catch(err => console.error(err));
     }
